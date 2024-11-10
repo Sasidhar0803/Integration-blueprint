@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="OMDB Movie Search" icon-name="custom:custom63">
+        <lightning-input 
+            type="text" 
+            label="Search Movie" 
+            onchange={handlesearch}>
+        </lightning-input>
+        <lightning-button 
+            label="Search" 
+            onclick={handlesearchbutton}>
+        </lightning-button>
+
+        <template if:true={movies}>
+            <template for:each={movies} for:item="movie">
+                <p key={movie.title}>
+                    <strong>Title:</strong> {movie.title} <br />
+                    <strong>Year:</strong> {movie.year} <br />
+                    <strong>Rating:</strong> {movie.rating} <br />
+                    <strong>Genre:</strong> {movie.genre} <br />
+                    <strong>Director:</strong> {movie.director} <br />
+                </p>
+            </template>
+        </template>
+
+        <template if:true={error}>
+            <p>{error}</p>
+        </template>
+    </lightning-card>
+</template>
